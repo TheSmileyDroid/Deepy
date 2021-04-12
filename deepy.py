@@ -1,7 +1,8 @@
 '''Um jogo sobre submarinos'''
 import sys
 import pygame
-import states.splash_state
+from states.game_state import GameState
+from states.splash_state import SplashState
 
 pygame.init()
 
@@ -18,7 +19,7 @@ SCREEN = pygame.display.set_mode(size=(WIDTH*RESIZE, HEIGHT*RESIZE))
 DISPLAY = pygame.surface.Surface((WIDTH, HEIGHT))
 pygame.display.set_caption("Deepy")
 state = {}
-state["atual"] = states.splash_state.SplashState(state)
+state["atual"] = GameState()
 
 while True:
     for event in pygame.event.get():

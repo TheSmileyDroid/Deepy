@@ -3,6 +3,7 @@ import objects
 import camera
 from pytmx.util_pygame import load_pygame
 from states.base_state import State
+import dialog
 
 WIDTH = 320
 HEIGHT = 224
@@ -32,6 +33,8 @@ class GameState(State):
 
         self.vignette = pygame.image.load("./resources/vig.png")
 
+        self.dialog = dialog.Dialog("Olá capitão", "bom dia", "teste")
+
     def Loop(self, DISPLAY, dt):
         self.all_objects.update(dt)
         self.cam.Update(self.Player)
@@ -50,3 +53,10 @@ class GameState(State):
         dark.blit(self.vignette, (ppos[0]-WIDTH/2, ppos[1]-HEIGHT/2))
 
         DISPLAY.blit(dark, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+
+        pressed = pygame.key.get_pressed()
+
+        if pressed[pygame.K_1]:
+            self.dialog.append("Ahoy", "Capitan")
+
+        self.dialog.draw(DISPLAY)

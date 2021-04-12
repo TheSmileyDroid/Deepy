@@ -17,8 +17,8 @@ class Camera():
         y = -target.rect.y + int(HEIGHT / 2)
 
         x = min(0, x)
-        x = max(-500, x)
+        x = max(-8*100, x)
         y = min(0, y)
-        y = max(-500, y)
+        y = max(-8*100, y)
 
         self.camera = pygame.Rect(x, y, self.width, self.height)
